@@ -27,7 +27,7 @@ To calculate the decimal representation of the number, calculate the sum of the 
           1\
 \
 From the bottom up: 1100\_2\
-Therefore 12 = 1100\_2\
+Therefore 12 = 1100\_2
 
 ### Notes:
 This was harder to put into words than we originally thought. We didn't have enough time to come up with many examples.
