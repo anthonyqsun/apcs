@@ -1,0 +1,11 @@
+Racket/scheme:
+(display "Hello, World!")
+
+Netlogo:
+print "Hello, World!"
+
+Python:
+print("Hello, World!")
+
+each have an output keyword/function and "Hello, World!" at the end in quotes (string).
+Racket uses prefix notation and has parentheses around function calls, netlogo doesn't require parentheses, and python needs parentheses after the print keyword to call.
