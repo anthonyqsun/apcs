@@ -1,0 +1,7 @@
+Anthony Sun
+APCS
+HW06 -- Hello, World in Racket, NetLogo, and Python
+2021-09-28
+
+Each language contains an output keyword or function and "Hello, World!" after it in quotes.
+Racket uses prefix notation and has parentheses around function calls, NetLogo doesn't require parentheses, and Python requires parentheses after the print keyword to call.
