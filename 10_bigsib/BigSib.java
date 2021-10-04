@@ -1,12 +1,17 @@
 /*
- * BeepBoop solo: Anthony Sun + Corn
- * APCS
- * HW09 -- packages
- * 2021-10-03
+BeepBoop: Jefford & Dylan, Anthony & Corn, Jeffery & Matthias
+APCS
+HW10 -- Return BigSib to SOP Greet
+2021-10-04
 */
-package greeter;
+
+/*
+Discoveries: 
+Unresolved Questions: 
+*/
+
 public class BigSib {
-	public static String greet(String name) {
-		return ("Why, hello there, "+name+". How do you do?");
+	 public static String greet(String name){
+		return "Hello there, " + name + "! Is all well?";
 	}
 }

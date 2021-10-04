@@ -1,3 +1,0 @@
-Include "package <packname>" in start of both files
-compile with "javac -d . <File>.java" for both files
-run with "java <packname>.<File>"
