@@ -1,5 +1,5 @@
 /*
- * Anthony Sun + corn, Nafiz Labib + Martho
+ * Anthony Sun + corn, Nafiz Labib + Martha
  * APCS
  * HW12 -- instance methods
  * 2021-10-05
