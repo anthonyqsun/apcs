@@ -1,4 +1,4 @@
-/* Kevin Xiao + Mr. Swag, Corina Chen + Binktop, Anthony Sun + Corn
+/* "Trio config for one day": Kevin Xiao + Mr. Swag, Corina Chen + Binktop, Anthony Sun + Corn
  * APCS
  * HW14 -- Overloading constructors
  * 2021-10-07
