@@ -3,7 +3,9 @@ Geese (Brian Li, Weichen Liu, Anthony Sun, Kahoot, Blueface, Corn)
 APCS
 Hw18 -- Bank account
 2021-10-18
+*/
 
+/*
 DISCOVERIES
 - Static is needed to use instance variables in the same class. 
 - If a class is executable, then its method must be static. 
@@ -13,12 +15,12 @@ QCC
 - Is it possible to not use static when running a method in the same class. 
 
 
-Q2
+Team Geese's Latest and Greatest Q2 Response:
 - When generating an instance of a class, new ClassName();, parenthesis are used, which denotes a method. 
 - An object is created, which means that something returned the object when instance is created.
 
 
-Q3: 
+Team Geese's Latest and Greatest Q3 Response:
 - create object
 - try System.out.println(objName)
 - check is valid output is given.
