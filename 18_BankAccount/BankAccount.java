@@ -1,4 +1,4 @@
-// Geese (Brian Li, Weichen Liu, Anthony Sun, Kahoot, Blueface, Corn)
+// Geese (Brian Li, Weichen Liu, Anthony Sun, Robert, Blueface, Corn)
 // APCS
 // Hw18 -- Bank account
 // 2021-10-18
