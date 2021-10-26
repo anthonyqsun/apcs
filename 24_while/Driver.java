@@ -1,15 +1,22 @@
-/***
-    driver for class Coin
+/*
+ * DELTA: Kevin Xiao + Mr. Swag, Anthony Sun + Corn
+ * APCS
+ * HW24 -- coin flips
+ * 2021-10-25
+ * time spent: 1 hr
+ */
 
-    ~~~ SUGGESTED WORKFLOW: ~~~
-    1. Compile this file and run. Note anything notable.
-    2. Move the "TOP" line down, so that it is below the first statement.
-    (emacs: with cursor at beginning of TOP line, C-k C-k, DOWN, DOWN, C-y)
-    (your editor: text editor)
-    3. Compile and run again.
-    4. Resolve errors one at a time until it works.
-    5. Repeat 2-4 until TOP meets BOTTOM.
-***/
+/**
+ * DISCO:
+ * While loops can be used to run something repeatedly until a conditon is met
+ * you can override the equals() method by creating your own
+ * 
+ * QCC:
+ * Can we use this calling method to do recursion?
+ *
+ * POST-v0 MODS:
+ * Replaced repetitive code in constructor with this() and this(String) calls.
+**/
 
 public class Driver {
 
@@ -52,12 +59,13 @@ public class Driver {
       Coin dos = new Coin();
 
       int x = 40;
-      while (uno.headsCtr + dos.headsCtr < x ){
+
+      while (uno.getHeadsCtr() + dos.getHeadsCtr() < x ){
 	      uno.flip();
 	      dos.flip();
       }
-	System.out.println("flips: "+(uno.flipCtr + dos.flipCtr));
-	System.out.println("heads: "+(uno.headsCtr + dos.headsCtr));
+	System.out.println("flips: "+(uno.getFlipCtr() + dos.getFlipCtr()));
+	System.out.println("heads: "+(uno.getHeadsCtr() + dos.getHeadsCtr()));
 	uno.reset("heads", 0.50);
 	dos.reset("heads",0.50);
 	
@@ -70,19 +78,21 @@ public class Driver {
 			matches += 1;
 		}
 	}
-	System.out.println("Matches: " + matches);
-	System.out.println("flips: "+(uno.flipCtr + dos.flipCtr));
+	System.out.println("\nMatches: " + matches);
+	System.out.println("flips: "+(uno.getFlipCtr() + dos.getFlipCtr()));
 	uno.reset("heads",0.50);
 	dos.reset("heads",0.50);
+	matches=0;
+	while (matches < 65536 || matches % 2005 != 0) {
+		uno.flip();
+		dos.flip();
+		if (uno.equals(dos)) {
+			matches += 1;
+		}
+	}
+	System.out.println("\nMatches: " + matches);
+	System.out.println("flips: "+(uno.getFlipCtr() + dos.getFlipCtr()));
 
-	
-
-      while (birth.flipCtr % 2005 != 0 || birth.flipCtr == 0) {
-              birth.flip();
-}
-      System.out.println(birth.headsCtr);
-      System.out.println(birth.flipCtr);
-      System.out.println("at least" + birth.flipCtr + " \
 
       // ====================BOTTOM======================
 

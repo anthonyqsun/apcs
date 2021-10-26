@@ -54,11 +54,7 @@ public class Coin {
       postcond:
   ***/
   public Coin( String s ) {
-  	flipCtr = 0;
-  	headsCtr = 0;
-  	tailsCtr = 0;
-  	name = s;
-  	bias = 0.5;
+  	this();
   	upFace = "heads";
   	value = assignValue(s);
   }
@@ -70,13 +66,8 @@ public class Coin {
       postcond:
   ***/
   public Coin( String s, String nowFace ) {
-    	flipCtr = 0;
-  	headsCtr = 0;
-  	tailsCtr = 0;
-  	name = s;
-  	bias = 0.5;
-  	upFace = nowFace;
-  	value = assignValue(s);
+	this(s);
+	upFace = nowFace;
   }
 
 
