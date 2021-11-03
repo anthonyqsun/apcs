@@ -1,9 +1,16 @@
 /***
- * Clyde "Thluffy" Sinclair
+ * Geese - Brian Li + Robert, Anthony Sun + Corn, Weichen Liu + Blueface
  * APCS
- * HW31 --
- * 2021-11-04r
- * time spent: _hrs
+ * HW31 -- Pig Skeleton
+ * 2021-11-04
+ * time spent: 0.7 hrs
+ *
+ * DISCO:
+ * - You can string together methods to accomplish a complicated task
+ * - You cannot index a String, and must use substring to access indiv. letters/chars
+ * 
+ * QCC:
+ * - Is there a more efficient way of iterating through all the indices without using a for loop?
  *
  * class Pig
  * a Pig Latin translator
