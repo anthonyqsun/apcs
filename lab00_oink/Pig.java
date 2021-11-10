@@ -102,6 +102,35 @@
     return accumulator;
   }
 
+    /**
+    String firstVowel(String) -- returns first vowel in a String
+    pre:  w != null
+    post: firstVowel("") --> ""
+    firstVowel("zzz") --> ""
+    firstVowel("meatball") --> "e"
+    **/
+  public static String firstVowel( String w ) {
+
+    String ans = "";
+
+    if ( hasAVowel(w) ) //Q: Why this necess?
+      ans = allVowels(w).substring(0,1);
+
+    return ans;
+  }
+
+
+      /**
+    boolean beginsWithVowel(String) -- tells whether a String begins with a vowel
+    pre:  w != null and w.length() > 0
+    post: beginsWithVowel("apple")  --> true
+    beginsWithVowel("strong") --> false
+    **/
+    public static boolean beginsWithVowel( String w ) {
+    return isAVowel( w.substring(0,1) );
+    }
+
+
 
     /*=====================================
       boolean isPunc(String) -- tells whether a character is punctuation
@@ -158,22 +187,42 @@
   public static String engToPig( String w ) {
 
     String ans = "";
+    String append = "";
+    if (hasPunc(w)) {
+        append = w.substring(w.length()-1);
+        w=w.substring(0,w.length()-1);
+    }
 
-    if ( beginsWithVowel(w) )
+    if ( beginsWithVowel(w.toLowerCase()) )
       ans = w + "way";
 
     else {
-      int vPos = w.indexOf( firstVowel(w) );
+      int vPos = w.indexOf( firstVowel(w.toLowerCase()) );
       ans = w.substring(vPos) + w.substring(0,vPos) + "ay";
     }
+
+    if (beginsWithUpper(w)) {
+      ans = ans.toLowerCase();
+      ans = ans.substring(0,1).toUpperCase() + ans.substring(1);
+    }
+
+    ans = ans + append;
+
+
 
     return ans;
   }
 
+
+
+
+
+
   public static void main( String[] args )
   {
-    System.out.println("");
+    System.out.println(engToPig("Ello"));
+    System.out.println(engToPig("ello"));
+    System.out.println(engToPig("Mother!"));
   }//end main()
 
 }//end class Pig
-
