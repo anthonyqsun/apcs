@@ -1,31 +1,28 @@
 /* Rocks: Kevin Xiao+Mr.Swag, Melody Lew+Ollie, Anthony Sun+Corn
  * APCS
- * Lab00 - oink v4
+ * Lab00 - oink v2
  * 2021-11-09
- * time spent: 3 hr
+ * time spent: 2 hr
+ */
+
+/* TODO:
+ * Implement:
+ * 	Handling phrases
  */
 
 /* DISCO:
  * indexOf() returns -1 if the index of a specified character cannot be found
  * y can sometimes be a vowel in pig latin
  * .equals(x) = y compares objects
- * you can apply the principles of parsing through a String to find an integer to parsing through a phrase to isolate words
  *
  * QCC:
- * How can we account for punctuation that's not at the end of a word?
- * How can we handle numbers?
- * 
- * HOW WE UTILIZED SCANNER DEMO (v4):
- * We ran the input from Scanner through our pig latin translator
- * 
- * WHAT CAUSES THE RUNTIME ERROR IN THE SCANNER DEMO:
- * We didn't run into a runtime error, but we were confused about why the program "froze" until we realized that the program was waiting for an input
- * 
- * NEW IN V4:
- * We added scanner functionality
+ * What are the rules for y special cases?
+ * What's the most efficient way to account for all possible cases?
+ *
+ * NEW IN v2:
+ * We handled special y cases
  */
 
-import java.util.Scanner;
 
 public class Pig {
   //Q: How does this initialization make your life easier?
@@ -223,27 +220,19 @@ public class Pig {
     return ans;
   }
 
-  public static String parsePhrase(String w) {
-    int spaceIndex = w.indexOf(" ");
-    if (spaceIndex == -1) {
-      return engToPig(w);
-    }
-
-    return parsePhrase(w.substring(0,spaceIndex)) + " " +
-           parsePhrase(w.substring(spaceIndex + 1));
-  }
 
 
 
 
-  public static void main( String[] args ) {
 
-    //instantiate a Scanner with STDIN as its bytestream
-    Scanner sc = new Scanner( System.in );
-
-    while( sc.hasNext() ) {
-      System.out.println( parsePhrase(sc.next()) );
-    }
-  }
+  public static void main( String[] args )
+  {
+    System.out.println(engToPig("Ello"));
+    System.out.println(engToPig("ello"));
+    System.out.println(engToPig("Mother!"));
+    System.out.println(engToPig("Yourmom"));
+    System.out.println(engToPig("youtube"));
+    System.out.println(engToPig("tybestie"));
+  }//end main()
 
 }//end class Pig
