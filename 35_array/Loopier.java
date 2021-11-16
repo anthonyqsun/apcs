@@ -1,17 +1,18 @@
 /* NYAH - Hugo Jenkins + Boary, Anthony Sun + Corn, Nakib Abedin + Joker;
  * APCS pd06
- * HW34: arrays
+ * HW35 -- Extract, Simplify
  * 2021-11-15
  * time spent: 0.5 hrs
  *
  * DISCOS:
  * 1) linSearchR was possible without a helper method
- * 2) The JavaVisualizer is very helpful
+ * 2) The JavaVisualizer is very helpful. You can use it to determine if a method uses iteration or recusion.
  * 3) Our implementation was recursive even though we used a helper procedure since we broke it down
  *    into smaller problems to solve a more complex problem.
  * QCC:
- * 1) How can we determine if there is a way to solve a problem with recursion (without helper procedures)?
+ * 1) How can we determine if there is a way to solve a problem with recursion?
  * 2) Is it bad to use a helper procedure when a problem can be done without one?
+ * 3) Iteration is better for linear data structures, but what would be an example of a non-linear data structure?
 */
 
 public class Loopier {
@@ -46,6 +47,28 @@ public class Loopier {
   public static int linSearchR(int[] a, int target) {
     return linSearchRHelper(a, target, 0);
   }
+  
+  /*
+  ============ Team ABA's Approach ============
+  public static int linSearchR(int[] a, int target) {
+		if (a.length == 0) { return -1;}
+		else {
+			if (a[0] == target) { return 0;}
+			else {
+				int[] aNew = new int[a.length-1];
+        		        for (int i = 1; i < a.length; i++) {
+                	        	aNew[i-1] = a[i];
+               			}
+				if ((a[1 + linSearchR(aNew, target)]) == target) {
+					return 1 + linSearchR(aNew, target); }
+				else { return -1; }
+			}
+		}
+	}
+  
+  // We found this code to be very elegant, which is why we included it.
+  // Our approach still works, but this method was done without a third parameter.
+  */
 
   private static int linSearchRHelper(int[] a, int target, int index){
     if (index > a.length - 1){
@@ -113,3 +136,4 @@ public class Loopier {
     System.out.println(freqRec(randomInts, 5));
   }
 }
+
