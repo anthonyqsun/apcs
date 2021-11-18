@@ -1,11 +1,15 @@
 /*****************************************************
- * Clyde "Thluffy" Sinclair
- * APCS pd00
- * HW38 -- Shmoney
- * 2021-11-18
+ * NYAH: Hugo Jenkins + Boary, Anthony Sun + Corn, Nakib Abedin + Joker
+ * APCS pd06
+ * HW38 -- gambling is bad
+ * 2021-11-17
  *
- * class Slots
- * skeleton
+ * DISCO:
+ * When typecasting to int, we need to make sure it is casting the final value of an operation
+ * To generate a random int from 0 to n, run (int) (Math.random()*n)
+ * 
+ * QCC:
+ * is the boolean "retBoo" necessary for methods jackpot() and miniWin()?
  *****************************************************/
 
 public class Slots {
@@ -16,6 +20,9 @@ public class Slots {
     "lemon", "lemon", "lemon",
     "cherry", "cherry", "cherry",
     "apple", "apple", "apple",
+    "pear", "pear", "pear",
+    "plum", "plum", "plum",
+    "kiwi", "kiwi", "kiwi",
     "peach", "peach", "peach"
   };
 
@@ -73,8 +80,10 @@ public class Slots {
     // A simple approach to shuffling:
     // iterate through the array, swapping
     // the val at each index with a randomly chosen other index
-    for(  )
-      swap(  );
+    for(int i = 0; i < _fruits.length; i++) {
+      int rand = (int) (Math.random()*(_fruits.length-1));
+      swap(i,rand);
+    }
   }
 
 
@@ -87,6 +96,7 @@ public class Slots {
   public boolean jackpot()
   {
     boolean retBoo = false;
+    retBoo = _fruits[0] == _fruits[1] && _fruits[1] == _fruits[2];
 
 
     return retBoo;
@@ -102,7 +112,8 @@ public class Slots {
     =====================================*/
   public boolean miniWin()
   {
-    boolean retBoo = ?
+    boolean retBoo;
+    retBoo = (jackpot() || (_fruits[0] != _fruits[1] && _fruits[0] != _fruits[2]) && _fruits[2] != _fruits[1]);
 
 
     return retBoo;
@@ -112,12 +123,13 @@ public class Slots {
   //main() method for testing
   public static void main( String[] args ) {
     //usage: move bar below down 1 line at a time to test functionality...
-    Slots machine = new Slots();
-    machine.swap(2,7);
-    System.out.println(machine);
-    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
     Slots machine01 = new Slots();
     Slots machine02 = new Slots();
+    // for (int i = 0; i < 10; i++){
+    // machine01.spinOnce();
+    // System.out.println(machine01);
+    // }
+
 
     //test to verify slot machines function indepently
     System.out.println();
@@ -165,6 +177,8 @@ public class Slots {
     System.out.println( "====================================" );
     System.out.println( "Your spin..." + "\t" + machine01 );
     System.out.println( "JACKPOT!\n" );
+    /*~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
   }//end main
 
