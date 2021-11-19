@@ -1,0 +1,21 @@
+Errors:
+	Compile-time: syntax wrong
+	run-time: program runs into an error
+	Logic error: does not produce expected results
+
+Compile-time:
+If fixing compile-time errors doesn't work, check if you are compiling the right file.
+Debugging by bisection: delete half the code and rerun.
+
+Run-time:
+If program hangs, print something out before and after each loop.
+An infinite recursion will result in a StackOverflowError
+You can also print something like "entering method foo" before running a method to see what's been run.
+
+Exceptions tell you what went wrong in your code.
+
+Logic errors:
+Runtime prints can be useful here as well to print variables to understand what's going on.
+If a large expression doesn't work the way it's intended, you should test each part of it or split it into smaller sections.
+
+After finding a bug, think on why it happened and plan to avoid it in the future.
