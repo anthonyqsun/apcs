@@ -26,12 +26,13 @@ public class Rational {
   }
 
   public Rational(int p, int q) {
-    this.p = p;
-    this.q = q;
+    this();
     if (q == 0) {
       System.out.println("Denominator cannot be 0. Set to 1.");
-      this.q=1;
     }
+    else {
+      this.p=p;
+      this.q=q;
 
   }
 
@@ -48,33 +49,27 @@ public class Rational {
   }
 
   public String toString() {
-    String s = "\n";
-    s+=p;
-    s+="\n";
-    s+="—";
-    s+="\n";
-    s+=q;
-    return s;
+    return p+"/"+q;
   }
 
   public void multiply(Rational r) {
-    p *= r.getP();
-    q *= r.getQ();
+    p *= r.p;
+    q *= r.q;
   }
 
   public void divide(Rational r) {
-    p *= r.getQ();
-    q *= r.getP();
+    p *= r.q;
+    q *= r.p;
   }
 
   public void add(Rational r) {
-    p = p*r.getQ() + r.getP()*q;
-    q *= r.getQ();
+    p = p*r.q + r.p*q;
+    q *= r.q;
   }
 
   public void subtract(Rational r) {
-    p = p*r.getQ() - r.getP()*q;
-    q *= r.getQ();
+    p = p*r.q - r.q*q;
+    q *= r.q;
   }
 
   public static int gcdER( int a, int b) {
@@ -89,6 +84,15 @@ public class Rational {
 	  }
   }
 
+  public void simplify() {
+    int gcd = gcdER(p,q);
+    p /= gcd;
+    q /= gcd;
+  }
+
+  public boolean compareTo(Rational r) {
+    return this.
+
   public static void main(String[] args) {
 
     /*
@@ -101,7 +105,7 @@ public class Rational {
    System.out.println("//====================================");
 
    //Rational d0 = new Rational(1, 0);
-   System.out.println("Denominator set to 0: " + new Rational(1, 0) + " ...should be 1/1");
+   System.out.println("Denominator set to 0: " + new Rational(1, 0) + " ...should be 0/1");
    System.out.println("//====================================");
 
 
