@@ -1,17 +1,19 @@
 /*
 NYAH: Hugo Jenkins + Boary, Anthony Sun + Corn, Nakib Abedin + Joker
 APCS
-HW43 - skeleton of SuperArray
-2021-12-06
+HW44 - Refactored SuperArray
+2021-12-07
 time spent: 0.5 hrs
 
 DISCO:
-0. _size should be changed when the length of _data changes
-1. the "_" indicates something is an instance variable
+0. Write "2" instead of "two" for indexes.
+1. _size takes the value of the meaningful size of the array.
+2. The reason our default size is 10 because it is a good balance to avoid allocating too much or too little memory.
 
 QCC:
-0. How will we use expand() in the future
-1. why does expand() double the length of the array
+0. Expanded array only needs to be run once.
+1. How will users access the length of the array encapsulated by SuperArray?
+
 */
 
 /***************************
@@ -19,6 +21,8 @@ QCC:
  * Wrapper class for array. Facilitates resizing,
  * getting and setting element values.
  ***************************/
+
+
 
 public class SuperArray
 {
@@ -37,12 +41,14 @@ public class SuperArray
   //output SuperArray in [a,b,c] format
   public String toString()
   {
-    String s = "[";
-    for (int i = 0; i < _size; i++) {
-        s +=_data[i] +",";
+    if (_size == 0) {
+      return "[]";
     }
-
-    return s.substring(0,s.length()-1)+"]";
+    String s = "";
+    for (int i = 0; i < _size; i++) {
+        s += "," + _data[i];
+    }
+    return "[" + s.substring(1)+"]";
   }
 
 
@@ -74,6 +80,9 @@ public class SuperArray
   {
     int i = _data[index];
     _data[index] = newVal;
+    if (index > _size - 1) {
+      _size++;
+    }
     return i;
   }
 
@@ -124,11 +133,24 @@ public class SuperArray
       System.out.println("Printing populated SuperArray curtis...");
       System.out.println(curtis);
 
-      for( int i = 0; i < 3; i++ ) {
       curtis.expand();
       System.out.println("Printing expanded SuperArray curtis...");
       System.out.println(curtis);
-      }
+
+      curtis.add(9);
+      System.out.println("Printing SuperArray curtis with value added...");
+      System.out.println(curtis);
+
+      curtis.add(2,100);
+      System.out.println("Printing SuperArray curtis with value added at index 2...");
+      System.out.println(curtis);
+
+      curtis.remove(2);
+      System.out.println("Printing SuperArray curtis with value removed at index 2...");
+      System.out.println(curtis);
+
+
+
     /*~~~~~~~~move~me~down~~~~~~~~~~~~~~V~~~~~~~~
 
       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|~~~~~~~~*/
