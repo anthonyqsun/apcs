@@ -42,7 +42,12 @@ public class Driver {
    System.out.println("r.compareTo(r) --> " + r.compareTo(r) + " ... expecting 0");
    System.out.println("s.compareTo(s) --> " + s.compareTo(s) + " ... expecting 0");
    System.out.println("t.compareTo(t) --> " + t.compareTo(t) + " ... expecting 0");
-
-
+   
+   try {
+   System.out.println("t.compareTo(\"hi\") --> " + t.compareTo("hi") + " ... expecting exception");
+   }
+   catch (ClassCastException c) {
+	   System.out.println("Error! whoopsies :)");
+   }
   }
 }
