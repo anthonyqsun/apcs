@@ -1,23 +1,28 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
+// Anthony Sun + Corn; Nakib Abedin + Joker
+// APCS pd06
 // HW51 -- implementing bubblesort
-// 2022-01-04t
-// time spent:  hrs
+// 2022-01-04
+// time spent: 1.0 hr
 
 /******************************
  * class BubbleSort -- implements bubblesort algorithm (vanilla)
  *
  * ALGO:
+ * 1) Create the bubble. Start from one end (in this case, index 0). Set n=0 and set the bubble as n and n+1.
+ * 2) If n>n+1, swap the values. Then increment n by one and repeat until you reach the end of the list.
+ * 3) Check if the list is sorted (if there are no swaps after one complete iterationm then it must be sorted).
  *
  * DISCO
+ * 1) Bubble sort is much more efficient than the algoritms we used to sort in introCS.
+ * 2) You need one less pass than the length of the collection.
  *
  * QCC
  * q0: If a pass requires no swaps, what do you know?
- * a0:
+ * a0: The collection is sorted
  * q1: After pass p, what do you know?
- * a1:
+ * a1: p items in the list are in the correct position
  * q2: How many passes are necessary to completely sort?
- * a2:
+ * a2: one less than the length of the collection
  *
  ******************************/
 
@@ -85,7 +90,7 @@ public class BubbleSort
     ArrayList<Comparable> data = new ArrayList<Comparable>();
     for (int i = 0; i < input.size(); i++) {
       data.add(input.get(i));
-      
+
     }
     for (int x = data.size()-1; x > 0; x--) {
       for (int i = 0; i < x; i++) {
@@ -106,7 +111,6 @@ public class BubbleSort
   public static void main( String [] args )
   {
     /*===============for VOID methods=============
-
       ArrayList glen = new ArrayList<Integer>();
       glen.add(7);
       glen.add(1);
@@ -116,12 +120,10 @@ public class BubbleSort
       System.out.println( "ArrayList glen before sorting:\n" + glen );
       bubbleSortV(glen);
       System.out.println( "ArrayList glen after sorting:\n" + glen );
-
       ArrayList coco = populate( 10, 1, 1000 );
       System.out.println( "ArrayList coco before sorting:\n" + coco );
       bubbleSortV(coco);
       System.out.println( "ArrayList coco after sorting:\n" + coco );
-
       ============================================*/
 
       ArrayList glen = new ArrayList<Integer>();
@@ -142,9 +144,8 @@ public class BubbleSort
       System.out.println( "sorted version of ArrayList coco:\n"
       + cocoSorted );
       System.out.println( "ArrayList coco after sorting:\n" + coco );
-      System.out.println( coco );
+      //System.out.println( coco );
       /*==========for AL-returning methods==========
-
       ============================================*/
 
   }//end main
