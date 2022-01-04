@@ -84,7 +84,7 @@ public class BubbleSort
   {
     ArrayList<Comparable> data = new ArrayList<Comparable>();
     for (int i = 0; i < input.size(); i++) {
-      data.set(i, input.get(i));
+      data.add(input.get(i));
       
     }
     for (int x = data.size()-1; x > 0; x--) {
