@@ -1,25 +1,27 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
+// Chrysanthemum Tea: Anthony Sun, Melody Lew, Ryan Lau
+// APCS pd6
 // HW52 -- implementing selection sort
 // 2022-01-05w
-// time spent:  hrs
+// time spent: 2 hrs
 
 /******************************
  *   class SelectionSort -- implements Selection-Sort algorithm
  *
  * ALGO:
- *
+ * 0. Find maximum value
+ * 1. Swap maximum value with the last working index
+ * 2. Repeat, decrementing the working index by 1.
  * DISCO
- *
+ * We have to traverse pass + 1 times
  * QCC
  * q0: How many passes to sort n elements?
- * a0:
+ * a0: n-1
  * q1: What do you know after pass p?
- * a1:
+ * a1: p elements are sorted/in the correct position
  * q2: How do you know if sorted?
- * a2:
+ * a2: n-1 passes have occurred.
  * q3: What does a pass boil down to?
- * a3:
+ * a3: A traversal and a swap.
  ******************************/
 
 
@@ -65,24 +67,27 @@ public class SelectionSort
     //note: this version places greatest value at "rightmost" end
 
     //maxPos will point to position of SELECTION (greatest value)
-    int maxPos;
+    int maxPos=0;
 
     for(int pass = data.size()-1; pass > 0; pass--) {
-      System.out.println( "\nbegin pass " + (data.size()-pass) );//diag
+      // System.out.println( "\nbegin pass " + (data.size()-pass) );//diag
+      maxPos=0;
 
-
-      for(int i = 0; i < data.size(); i++) {
+      for(int i = 0; i < pass+1; i++) {
+        // System.out.println(i+",,"+maxPos); //diag
         if (data.get(i).compareTo(data.get(maxPos))>0) {
           maxPos = i;
         }
 
 
-        System.out.println( "maxPos: " + maxPos );//diag
-        System.out.println( data );//diag
+        // System.out.println( "maxPos: " + maxPos );//diag
+        // System.out.println( data +"\n");//diag
       }
+
+      System.out.println(maxPos);
       data.set(pass, data.set(maxPos, data.get(pass)));
 
-      System.out.println( "after swap: " +  data );//diag
+      // System.out.println( "after swap: " +  data );//diag
     }
   }//end selectionSort
 
@@ -108,6 +113,7 @@ public class SelectionSort
 
   public static void main( String [] args )
   {
+    /*===============for VOID methods=============
 
     ArrayList glen = new ArrayList<Integer>();
     glen.add(7);
@@ -123,11 +129,9 @@ public class SelectionSort
     System.out.println( "ArrayList coco before sorting:\n" + coco );
     selectionSortV(coco);
     System.out.println( "ArrayList coco after sorting:\n" + coco );
-    /*===============for VOID methods=============
 
       ============================================*/
 
-    /*==========for AL-returning methods==========
       ArrayList glen = new ArrayList<Integer>();
       glen.add(7);
       glen.add(1);
@@ -146,7 +150,8 @@ public class SelectionSort
       System.out.println( "sorted version of ArrayList coco:\n"
       + cocoSorted );
       System.out.println( "ArrayList coco after sorting:\n" + coco );
-      System.out.println( coco );
+    /*==========for AL-returning methods==========
+
       ============================================*/
 
   }//end main
