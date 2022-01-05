@@ -84,7 +84,6 @@ public class SelectionSort
         // System.out.println( data +"\n");//diag
       }
 
-      System.out.println(maxPos);
       data.set(pass, data.set(maxPos, data.get(pass)));
 
       // System.out.println( "after swap: " +  data );//diag
