@@ -1,8 +1,8 @@
-// Clyde "Thluffy" Sinclair
-// APCS pd0
+// Chrysanthemum Tea: Melody Lew, Anthony Sun, Ryan Lau
+// APCS pd6
 // HW53 -- implementing insertion sort
 // 2022-01-06r
-// time spent:  hrs
+// time spent:  0.5 hrs
 
 /******************************
  * class InsertionSort -- implements InsertionSort algorithm
@@ -122,7 +122,6 @@ public class InsertionSort
       System.out.println( "\nArrayList glen before sorting:\n" + glen );
       insertionSortV(glen);
       System.out.println( "\nArrayList glen after sorting:\n" + glen );
-
       ArrayList coco = populate( 10, 1, 1000 );
       System.out.println( "\nArrayList coco before sorting:\n" + coco );
       insertionSortV(coco);
