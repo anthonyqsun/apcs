@@ -67,12 +67,8 @@ public class BubbleSort
   {
     for (int x = data.size()-1; x > 0; x--) {
       for (int i = 0; i < x; i++) {
-        Comparable n = data.get(i);
-        Comparable m = data.get(i+1);
-
-        if (n.compareTo(m)>0) {
-          data.set(i+1, n);
-          data.set(i, m);
+        if (data.get(i).compareTo(data.get(i+1))>0) {
+	  data.set(i, data.set(i+1, data.get(i)));
         }
 
       }
