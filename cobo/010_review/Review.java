@@ -37,7 +37,6 @@ public class Review {
       Scanner input = new Scanner(new File("positiveAdjectives.txt"));
       while(input.hasNextLine()){
         String temp = input.nextLine().trim();
-        System.out.println(temp);
         posAdjectives.add(temp);
       }
       input.close();
@@ -74,7 +73,7 @@ public class Review {
     // System.out.println(pos);
     // System.out.println(neg);
 
-
+    System.out.println(fakeReview("SimpleReview.txt", "positive"));
 
     
   }
@@ -107,25 +106,76 @@ public class Review {
     return 5;
   }
 
-  public static String fakeReview(String fileName) {
+  public static String fakeReview(String fileName, String posneg) {
+  //   String file = textToString(fileName);
+  //   String out = "";
+  //   for (String s : splice(file, SPACE)) {
+  //     if(s.indexOf("*") != -1) {
+  //       int choice = (int) (Math.random()*sentiment.size());
+  //       int counter = 0;
+  //       for (String key : sentiment.keySet()) {
+  //         if (counter == choice) {
+  //           out += key + " ";
+  //         }
+  //         counter++;
+  //       }
+  //     }
+  //     else {
+  //       out += s + " ";
+  //     }
+  //   }
+  //   return out.trim();
+
     String file = textToString(fileName);
-    
+    String out = "";
+    for (String s : splice(file, SPACE)) {
+      if(s.indexOf("*") != -1) {
+        String word = s.substring(1);
+        boolean bias = sentimentVal(word) >= 0;
+
+        if(posneg.equals("positive") && bias || posneg.equals("negative") && !bias) {
+          out+=word+" ";
+          continue;
+        }
+
+        ArrayList<String> workingList;
+        if (bias) {
+          workingList = posAdjectives;
+        }
+        else {
+          workingList = negAdjectives;
+        }
+
+        int choice = (int) (Math.random()*workingList.size());
+        int counter = 0;
+        for (String key : workingList) {
+          if (counter == choice) {
+            out += key + " ";
+          }
+          counter++;
+        }
+      }
+      else {
+        out += s + " ";
+      }
+    }
+    return out.trim();
   }
 
   private static ArrayList<String> splice(String text, String key) {
     int indexOfKey = text.indexOf(key);
-
-    while (indexOfKey != -1) {
-      
-    }
     ArrayList<String> strs = new ArrayList<String>();
 
     if (indexOfKey == -1) {
       strs.add(text);
-      return strs;
     }
+    else {
 
-    strs.add(text.substring(0,indexOfKey)) + splice(text.substring(indexOfKey+1), key);
+      strs.add(text.substring(0,indexOfKey));
+      for (String s : splice(text.substring(indexOfKey+1), key)) {
+        strs.add(s);
+      }
+    }
     return strs;
   }
 
