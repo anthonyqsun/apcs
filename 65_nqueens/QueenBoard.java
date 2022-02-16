@@ -1,3 +1,11 @@
+/*
+Pumpkin (Jefford Shau, Jonathan Song, Anthony Sun)
+APCS
+HW65 -- nqueens
+2022-02-16
+time spent: 1 hr
+*/
+
 /***
  * class QueenBoard
  * Generates solutions for N-Queens problem.
