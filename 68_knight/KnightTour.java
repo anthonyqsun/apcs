@@ -99,7 +99,7 @@ class TourFinder
     //---------------------------------------------------------
     for (int i = 0; i < _sideLength; i++) {
       for (int j = 0; j < _sideLength; j++) {
-        if ((i < 2 || i > 9) || (j < 2 || j > 9)) {
+        if ((i < 2 || i > n+1) || (j < 2 || j > n+1)) {
           _board[j][i] = -1;
         }
       }
@@ -153,7 +153,7 @@ class TourFinder
    **/
   public void findTour( int x, int y, int moves )
   {
-    delay(50); //slow it down enough to be followable
+    // delay(1); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
     if ( _solved) System.exit(0);
@@ -177,7 +177,7 @@ class TourFinder
 
       System.out.println( this ); //refresh screen
 
-      delay(600); //uncomment to slow down enough to view
+      // delay(2); //uncomment to slow down enough to view
 
       /******************************************
        * Recursively try to "solve" (find a tour) from
@@ -191,55 +191,90 @@ class TourFinder
       int yCor=0;
       int xCor=0;
       boolean valid = true;
+      int option = 0;
       if (_board[x+1][y+2] == 0) {
-        xCor = x+1;
-        yCor = y+2;
+        option = 0;
       }
       else if (_board[x+2][y+1] == 0) {
-        xCor = x+2;
-        yCor = y+1;
+        option = 1;
       }
       else if (_board[x+2][y-1] == 0) {
-        xCor = x+2;
-        yCor = y-1;
+        option = 2;
       }
       else if (_board[x+1][y-2] == 0) {
-        xCor = x+1;
-        yCor = y-2;
+        option = 3;
       }
       else if (_board[x-1][y-2] == 0) {
-        xCor = x-1;
-        yCor = y-2;
+        option = 4;
       }
       else if (_board[x-2][y-1] == 0) {
-        xCor = x-2;
-        yCor = y-1;
+        option = 5;
       }
       else if (_board[x-2][y+1] == 0) {
-        xCor = x-2;
-        yCor = y+1;
+        option = 6;
       }
       else if (_board[x-1][y+2] == 0) {
-        xCor = x-1;
-        yCor = y+2;
+        option = 7;
       }
       else {
         valid = false;
       }
       if (valid) {
-        findTour(xCor, yCor, moves+1);
+        int[] coords = choice(option, x, y);
+        findTour(coords[0], coords[1], moves+1);
+        for (int a = option; a < 7; a++) {
+          coords = choice(a+1, x, y);
+          findTour(coords[0], coords[1], moves+1);
+        }
       }
       
       //If made it this far, path did not lead to tour, so back up...
       // (Overwrite number at this cell with a 0.)
       _board[x][y] = 0;
-      backtrack(moves);
 
-      System.out.println( this ); //refresh screen
+      // System.out.println( this ); //refresh screen
     }
   }//end findTour()
-
-  public void backtrack(int moves) {
+  
+  public int[] choice(int option, int x, int y) {
+    int xCor = 0;
+    int yCor = 0;
+    int[] arr = new int[2];
+    if (option == 0) {
+      xCor = x+1;
+      yCor = y+2;
+    }
+    else if (option == 1) {
+      xCor = x+2;
+      yCor = y+1;
+    }
+    else if (option == 2) {
+      xCor = x+2;
+      yCor = y-1;
+    }
+    else if (option == 3) {
+      xCor = x+1;
+      yCor = y-2;
+    }
+    else if (option == 4) {
+      xCor = x-1;
+      yCor = y-2;
+    }
+    else if (option == 5) {
+      xCor = x-2;
+      yCor = y-1;
+    }
+    else if (option == 6) {
+      xCor = x-2;
+      yCor = y+1;
+    }
+    else if (option == 7) {
+      xCor = x-1;
+      yCor = y+2;
+    }
+    arr[0] = xCor;
+    arr[1] = yCor;
+    return arr;
     
   }
 
