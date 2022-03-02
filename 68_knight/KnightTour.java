@@ -4,7 +4,7 @@
 // 2022-02-28m
 // time spent:  hrs
 
-/***
+  /***
  * SKELETON
  * class KnightTour (and supporting class TourFinder)
  * Animates generation of a Knight's Tour on a square chess board.
@@ -99,7 +99,7 @@ class TourFinder
     //---------------------------------------------------------
     for (int i = 0; i < _sideLength; i++) {
       for (int j = 0; j < _sideLength; j++) {
-        if (i < 2 || i > 9) && (j < 2 || j > 9) {
+        if ((i < 2 || i > 9) || (j < 2 || j > 9)) {
           _board[j][i] = -1;
         }
       }
@@ -120,8 +120,8 @@ class TourFinder
     //emacs shortcut: M-x quoted-insert, then press ESC
 
     int i, j;
-    for( i=0; i < _sideLength+4; i++ ) {
-      for( j=0; j < _sideLength+4; j++ )
+    for( i=0; i < _sideLength; i++ ) { // TODO modified
+      for( j=0; j < _sideLength; j++ )
         retStr = retStr + String.format( "%3d", _board[j][i] );
       //"%3d" allots 3 spaces for each number
       retStr = retStr + "\n";
@@ -153,7 +153,7 @@ class TourFinder
    **/
   public void findTour( int x, int y, int moves )
   {
-    //delay(50); //slow it down enough to be followable
+    delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
     if ( _solved) System.exit(0);
@@ -177,7 +177,7 @@ class TourFinder
 
       System.out.println( this ); //refresh screen
 
-      //delay(1000); //uncomment to slow down enough to view
+      delay(600); //uncomment to slow down enough to view
 
       /******************************************
        * Recursively try to "solve" (find a tour) from
@@ -188,23 +188,59 @@ class TourFinder
        *     g . . . b
        *     . h . a .
       ******************************************/
-      int xCor=0;
       int yCor=0;
-      if (_board[x+2][y+1] == 0) {
+      int xCor=0;
+      boolean valid = true;
+      if (_board[x+1][y+2] == 0) {
+        xCor = x+1;
+        yCor = y+2;
+      }
+      else if (_board[x+2][y+1] == 0) {
         xCor = x+2;
         yCor = y+1;
       }
-      else if (_board[x+1][y+2] == 0) [
+      else if (_board[x+2][y-1] == 0) {
+        xCor = x+2;
+        yCor = y-1;
+      }
+      else if (_board[x+1][y-2] == 0) {
         xCor = x+1;
+        yCor = y-2;
+      }
+      else if (_board[x-1][y-2] == 0) {
+        xCor = x-1;
+        yCor = y-2;
+      }
+      else if (_board[x-2][y-1] == 0) {
+        xCor = x-2;
+        yCor = y-1;
+      }
+      else if (_board[x-2][y+1] == 0) {
+        xCor = x-2;
+        yCor = y+1;
+      }
+      else if (_board[x-1][y+2] == 0) {
+        xCor = x-1;
         yCor = y+2;
-      ]
-
+      }
+      else {
+        valid = false;
+      }
+      if (valid) {
+        findTour(xCor, yCor, moves+1);
+      }
+      
       //If made it this far, path did not lead to tour, so back up...
       // (Overwrite number at this cell with a 0.)
       _board[x][y] = 0;
+      backtrack(moves);
 
       System.out.println( this ); //refresh screen
     }
   }//end findTour()
+
+  public void backtrack(int moves) {
+    
+  }
 
 }//end class TourFinder
