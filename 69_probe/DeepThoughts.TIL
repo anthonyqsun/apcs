@@ -1,0 +1,24 @@
+Pumpkin: Anthony Sun
+APCS pd7
+HW69 -- sense makin'
+2022-03-03
+time spent: 0.5hr
+
+n=5   1.48s    across 3 executions
+n=6   18.72s    across 3 executions
+n=7   18m    across 1 execution
+n=8   68min    across 1 executions
+
+q0: I think so. Every square has at least two exit and entry points, so a solution can be found no matter what.
+Experimental proof: the board can be broken down into 4 equivalent parts, so we only need to consider a 4x4 quadrant. If there are enough solutions to have a start or end point at all 16 of the (1-4)x(1-4) spots, then there must be a solution from any position.
+
+q1: yes; if one closed tour solution exists, the algorithm only needs to find the existing closed tour path to complete the solution.
+
+q2: each increment to n adds 2n-1 squares to consider, with each square being an exponential increase to the runtime.
+
+q3: maybe break the board up into a 5x5 chunk, solve that first, and have that be the starting board.
+
+
+2. -> proceed forward until you hit a wall.
+   -> turn right 90 degrees
+   -> follow the left wall until you come across an exit
