@@ -1,8 +1,8 @@
-// Clyde Sinclair
-// APCS pd0
+// Pumpkins: Jefford Shau, Jonathan Song, Anthony Sun
+// APCS pd7
 // HW68 -- recursively probing for a closed cycle
 // 2022-02-28m
-// time spent:  hrs
+// time spent: 2 hrs
 
   /***
  * SKELETON
@@ -15,16 +15,24 @@
  * $ java KnightTour [N]
  *
  * ALGO
- *
+ * check if board is solved.
+ * if not, check if max number of moves has been reached. set board state to solved if true
+ * if the given x and y coordinates do not refer to a cell with 0, end the current iteration
+ * otherwise, call findTour() on every possible orientation of the knight in series
+ * if reached, set the current cell to 0
+ * 
  * DISCO
- *
+ * this algo can be simplified much more than we thought
+ * having recursive calls in sequence can allow for a lot of depth
+ * 
  * QCC
- *
+ * is there a way to shorten the runtime?
+ * 
  * Mean execution times for boards of size n*n:
- * n=5   __s    across __ executions
- * n=6   __s    across __ executions
- * n=7   __s    across __ executions
- * n=8   __s    across __ executions
+ * n=5   1.48s    across 3 executions
+ * n=6   18.72s    across 3 executions
+ * n=7   ~15m    across 1 execution
+ * n=8   ~30m    across 1 executions
  *
  * POSIX PROTIP: to measure execution time from BASH, use time program:
  * $ time java KnightTour 5
@@ -89,16 +97,15 @@ class TourFinder
   //constructor -- build board of size n x n
   public TourFinder( int n )
   {
-    _sideLength = n+4;
-
+    _sideLength=n;
     //init 2D array to represent square board with moat
-    _board = new int[_sideLength][_sideLength];
+    _board = new int[_sideLength+4][_sideLength+4];
 
     //SETUP BOARD --  0 for unvisited cell
     //               -1 for cell in moat
     //---------------------------------------------------------
-    for (int i = 0; i < _sideLength; i++) {
-      for (int j = 0; j < _sideLength; j++) {
+    for (int i = 0; i < _sideLength+4; i++) {
+      for (int j = 0; j < _sideLength+4; j++) {
         if ((i < 2 || i > n+1) || (j < 2 || j > n+1)) {
           _board[j][i] = -1;
         }
@@ -120,8 +127,8 @@ class TourFinder
     //emacs shortcut: M-x quoted-insert, then press ESC
 
     int i, j;
-    for( i=0; i < _sideLength; i++ ) { // TODO modified
-      for( j=0; j < _sideLength; j++ )
+    for( i=0; i < _sideLength+4; i++ ) {
+      for( j=0; j < _sideLength+4; j++ )
         retStr = retStr + String.format( "%3d", _board[j][i] );
       //"%3d" allots 3 spaces for each number
       retStr = retStr + "\n";
@@ -153,19 +160,20 @@ class TourFinder
    **/
   public void findTour( int x, int y, int moves )
   {
-    // delay(1); //slow it down enough to be followable
+    // delay(50); //slow it down enough to be followable
 
     //if a tour has been completed, stop animation
-    if ( _solved) System.exit(0);
+    if ( _solved == true ) System.exit(0);
 
     //primary base case: tour completed
-    if ( moves == _board.length*_board.length) {
+    if ( moves == _sideLength * _sideLength + 1) {
       _solved = true;
       System.out.println( this ); //refresh screen
       return;
     }
+
     //other base case: stepped off board or onto visited cell
-    if ( _board[x][y] != 0) {
+    if ( _board[x][y] != 0 ) {
       return;
     }
     //otherwise, mark current location
@@ -177,7 +185,7 @@ class TourFinder
 
       System.out.println( this ); //refresh screen
 
-      // delay(2); //uncomment to slow down enough to view
+      //delay(1001); //uncomment to slow down enough to view
 
       /******************************************
        * Recursively try to "solve" (find a tour) from
@@ -188,94 +196,22 @@ class TourFinder
        *     g . . . b
        *     . h . a .
       ******************************************/
-      int yCor=0;
-      int xCor=0;
-      boolean valid = true;
-      int option = 0;
-      if (_board[x+1][y+2] == 0) {
-        option = 0;
-      }
-      else if (_board[x+2][y+1] == 0) {
-        option = 1;
-      }
-      else if (_board[x+2][y-1] == 0) {
-        option = 2;
-      }
-      else if (_board[x+1][y-2] == 0) {
-        option = 3;
-      }
-      else if (_board[x-1][y-2] == 0) {
-        option = 4;
-      }
-      else if (_board[x-2][y-1] == 0) {
-        option = 5;
-      }
-      else if (_board[x-2][y+1] == 0) {
-        option = 6;
-      }
-      else if (_board[x-1][y+2] == 0) {
-        option = 7;
-      }
-      else {
-        valid = false;
-      }
-      if (valid) {
-        int[] coords = choice(option, x, y);
-        findTour(coords[0], coords[1], moves+1);
-        for (int a = option; a < 7; a++) {
-          coords = choice(a+1, x, y);
-          findTour(coords[0], coords[1], moves+1);
-        }
-      }
-      
+      findTour(x+1,y+2,moves+1);
+      findTour(x+2,y+1,moves+1);
+      findTour(x+2,y-1,moves+1);
+      findTour(x+1,y-2,moves+1);
+      findTour(x-1,y-2,moves+1);
+      findTour(x-2,y-1,moves+1);
+      findTour(x-2,y+1,moves+1);
+      findTour(x-1,y+2,moves+1);
+
+
       //If made it this far, path did not lead to tour, so back up...
       // (Overwrite number at this cell with a 0.)
       _board[x][y] = 0;
 
-      // System.out.println( this ); //refresh screen
+      System.out.println( this ); //refresh screen
     }
   }//end findTour()
-  
-  public int[] choice(int option, int x, int y) {
-    int xCor = 0;
-    int yCor = 0;
-    int[] arr = new int[2];
-    if (option == 0) {
-      xCor = x+1;
-      yCor = y+2;
-    }
-    else if (option == 1) {
-      xCor = x+2;
-      yCor = y+1;
-    }
-    else if (option == 2) {
-      xCor = x+2;
-      yCor = y-1;
-    }
-    else if (option == 3) {
-      xCor = x+1;
-      yCor = y-2;
-    }
-    else if (option == 4) {
-      xCor = x-1;
-      yCor = y-2;
-    }
-    else if (option == 5) {
-      xCor = x-2;
-      yCor = y-1;
-    }
-    else if (option == 6) {
-      xCor = x-2;
-      yCor = y+1;
-    }
-    else if (option == 7) {
-      xCor = x-1;
-      yCor = y+2;
-    }
-    arr[0] = xCor;
-    arr[1] = yCor;
-    return arr;
-    
-  }
 
 }//end class TourFinder
