@@ -1,24 +1,36 @@
-Pumpkin: Jefford Shau, Jonathan Song, Anthony Sun
+uwu kittens (Jaylen Zeng, Anthony Sun, Ivina Wang)
 APCS pd7
-HW69 -- sense makin'
-2022-03-03
-time spent: 0.5hr
+HW69 -- Making Sense
+2022-03-02
+time spent: 1.5 hr
 
-n=5   1.48s    across 3 executions
-n=6   18.72s    across 3 executions
-n=7   18m    across 1 execution
-n=8   68min    across 1 executions
+* Mean execution times for boards of size n*n:
+* n=5   0.28s      across 5 executions
+* n=6   0.2926s    across 5 executions
+* n=7   18.74s     across 8 executions
+* n=8   9.3s       across 6 executions
 
-q0: I think so. Every square has at least two exit and entry points, so a solution can be found no matter what.
-Experimental proof: the board can be broken down into 4 equivalent parts, so we only need to consider a 4x4 quadrant. If there are enough solutions to have a start or end point at all 16 of the (1-4)x(1-4) spots, then there must be a solution from any position.
+q0: From any starting position, can an open tour always be found? Explain.
+* No. We ran $time java KnightTour 5 several times (with random starting
+* locations) and in some cases, no solution would be found.
 
-q1: yes; if one closed tour solution exists, the algorithm only needs to find the existing closed tour path to complete the solution.
+q1: Same, but for closed tour.
+* As long as there exists one closed-tour solution to a given n*n board, the
+* program can always end up following that board to complete the tour: there
+* is no defined starting point to a closed tour solution.
 
-q2: each increment to n adds 2n-1 squares to consider, with each square being an exponential increase to the runtime.
+q2: How do you explain the increase in execution time as n increases?
+* The computer has to check for more paths as the board increases-each increment
+* to n adds 2n-1 squares to consider, with each square being an exponential
+* increase to the runtime.
 
-q3: maybe break the board up into a 5x5 chunk, solve that first, and have that be the starting board.
+q3: Thoughts on optimization?
+* The program could prioritize squares with the lowest number of possible legal paths.
+* By choosing the square with the least number of continuations, you are effectively reducing the amount of backtracking that is done because there are less paths that you have to fully traverse.
 
 
-2. -> proceed forward until you hit a wall.
-   -> turn right 90 degrees
-   -> follow the left wall until you come across an exit
+ALGO for finding way out of a maze
+* Continuously check if there is a wall (" ") to the left of the hero.
+* If so, walk forward. If not, turn left and walk forward one space.
+* If the hero cannot walk forward because there is a wall in the way, turn left. If the hero has been in the same position more than once turn right.
+* This algorithm does not work if the maze is the walls are not completely connected. (i.e. a standalone island)
