@@ -44,7 +44,6 @@ public class LList implements List //interface def must be in this dir
     String removed = "";
 
     for (int i = 0; i < index-1; i ++){
-      // Copies everything before the index
         tempNode = tempNode.getNext();
     }
     removed = tempNode.getNext().getCargo();

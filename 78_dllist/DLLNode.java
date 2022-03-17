@@ -10,6 +10,23 @@
  * Stores its data as a String
  **/
 
+/*
+DISCO:
+* this is pretty similar to LLNode, except that we have to handle changing the previous node
+QCC:
+* does constructing the DLLNode class require getPrev to be called?
+
+ALGO ADD:
+* create new node with newVal, null previous, and _head as next
+* set node to _head
+* set the previous value in the next node to _head
+
+ALGO REM:
+* iterate up to element before the one set to be removed
+* change the next node to the pointer after the one set to be removed (2x next)
+* update the new next node's prev pointer to the current node
+*/
+
 public class DLLNode
 {
   //instance vars
