@@ -1,10 +1,3 @@
-// Watermelon: Justin Mohabir, Jomin Zhang, Anthony Sun
-//APCS pd7
-//HW77: Insert|Remove
-//2022-03-16
-//time spent: 0.5hr + class time
-
-
 public class LList implements List //interface def must be in this dir
 {
 

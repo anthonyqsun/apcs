@@ -1,8 +1,8 @@
-//Clyde Sinclair
-//APCS pd0
-//HW75 -- Node for a linked list
-//2022-03-11f
-//time spent: _h
+//Watermelon: Justin, Anthony, Jomin
+//APCS pd7
+//HW78 -- doubly linked nodes
+//2022-03-17r
+//time spent: 0.5h + class time
 
 /***
  * class LLNode
