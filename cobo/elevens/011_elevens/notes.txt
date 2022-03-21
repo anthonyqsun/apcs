@@ -1,0 +1,83 @@
+uwu kittens (Jaylen Zeng, Anthony Sun, Ivina Wang)
+APCS pd7
+L07 -- But These Go Up To Eleven
+2022-03-21
+time spent: -
+
+ACTIVITY 2
+1) A deck is an object that allows you to access many instances of a card
+2) This deck would contain 6 cards.
+3)
+* ranks would contain: Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King, Ace
+* suits would contain: Diamonds, Clubs, Hearts, Spades
+* pointValues contain: 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11
+4) Only the order of the ranks and pointValues matter because they correspond to each other. A deck will automatically create a card with each suit along with every rank.
+
+ACTIVITY 3
+1)
+public static String flip() {
+  int choice = (int)(Math.random()*3);
+  if (choice <3) { // <3
+    return "heads";
+  }
+  return "tails";
+}
+
+2)
+public static boolean isIn(int[] arr, int value) {
+  for(int i = 0; i < arr.length; i++) {
+    if (arr[i] = value) return true;
+  }
+  return false;
+}
+public static boolean arePermutations(int[] a, int[] b) {
+  if (a.length != b.length) return false;
+  for (int i = 0; i < a.length; i++) {
+    if(!isIn(a), b[i]) return false;
+  }
+  return true;
+}
+
+3) 4,3
+
+ACTIVITY 6
+1)
+*5S + 6C
+*5C + 6C
+2) Yes, because JQK must be removed in sets of three, and the deck would otherwise always be even, so the only odd combination of leftover cards must contain a J,Q,K.
+3) Yes, it involves a bit of strategy. It's preferable to remove duplicate cards (e.g. 2S, 2H) to maximize the chances of having a valid combination on the board.
+
+ACTIVITY 7
+1) Just a deck of cards. Instance variables:
+* A Deck object
+* An array that can hold 9 Card objects
+
+2)
+* Shuffle the deck.
+* Initialize starting board by dealing 9 cards from the deck.
+* Select and replace cards.
+* Check if there are any legal moves. If not, game ends.
+* If board is empty, game is won.
+
+3) Yes
+
+4)
+  a. In the constructor and newGame() method.
+  b. In the methods isLegal(), anotherPlayIsPossible().
+  c. 0: 0, 1: 1, 2: 3, 3: 6, 4: 7
+  d.
+  public static void printCards(ElevensBoard board) {
+    List<Integer> cIndexes = board.cardIndexes();
+    for (int i : cIndexes) {
+      System.out.println(board.cardAt[i]);
+    }
+  }
+  e. anotherPlayIsPossible() needs to call cardIndexes to get the new deck that has been dealt.
+
+  ACTIVITY 8
+  1) They are all: solitaire games; use a board with a spread of cards; named after numbers; they all have legal conditions;
+     They are different in that: they have different board sizes; they have different legal conditions; they have different names;
+  2) An object of type Board is initialized, but is set to the constructor of ElevensBoard, which initializes the instance variables to be specific to Elevens.
+  3) They do cover all the differences, as the major difference between the different solitaire games is their legal conditions; board size is taken care of in the constructor.
+
+  ACTIVITY 9
