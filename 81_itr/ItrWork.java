@@ -6,12 +6,15 @@
 
  /***
     DISCO
-
+    * You cannot remove an item from a list that has an active iterator, as that would edit the list
+    * you cannot move backwards after getting next element
     QCC
+    * Can iterators have more functionality than what's given?
 
     SUMMARY THE FIRST:
-
+    * iterators allow you to traverse a collection object by telling you if there is a next element and what that element is.
     SUMMARY THE SECOND:
+    * iterators are returned by a method (iterator()) in a collection class, and allows you to traverse a collection/list. 
 
 **/
 
