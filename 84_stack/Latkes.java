@@ -72,6 +72,11 @@ public class Latkes
     return _stackSize >= _stack.length;
   }// O(?)
 
+  public String peek() {
+    if (!isEmpty()) return _stack[_stackSize-1];
+    return null;
+  }
+
 
   //main method for testing
   public static void main( String[] args )
@@ -124,5 +129,13 @@ public class Latkes
       ^~~~~~~~~~~~~~~~AWESOME~~~~~~~~~~~~~~~^*/
 
   }//end main()
+
+  public String toString() {
+    String s = "";
+    for(int i = 0; i < _stackSize; i++) {
+      s+= _stack[i]+", ";
+    }
+    return s;
+  }
 
 }//end class Latkes
