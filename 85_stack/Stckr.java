@@ -13,7 +13,6 @@ public class Stckr
     // USAGE: un-comment exactly 1 assignment below
     // Stack<String> cakes = new ALStack<String>();
     Stack<String> cakes = new LLStack<String>();
-    //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       System.out.println(cakes.isEmpty());
       cakes.push("aoo");
       cakes.push("boo");
