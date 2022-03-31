@@ -13,6 +13,7 @@ DISCO:
 
 QCC:
 - Would it be better to use a stack to calculate the difference?
+- how do we account for cases when spaces do not separate a number from a parenthesis or operator? e.g. ( + 1 3)
 */
 
 /***
