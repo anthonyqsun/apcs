@@ -1,3 +1,18 @@
+/* Watermelon: Justin, Anthony, Jomin
+apcs pd7
+hw87 - queue
+2022-04-04
+time spent: 0.5 hr
+*/
+
+/*
+DISCO:
+- peekTop will always return the same thing if first element is not removed
+
+QCC:
+- how can we handle trying to dequeue when the queue is empty?
+*/
+
 public class NodeQueue<T> implements Queue<T> {
     LLNode<T> head;
     LLNode<T> tail;
