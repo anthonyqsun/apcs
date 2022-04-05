@@ -1,0 +1,34 @@
+data sets:
+
+§ http://www.kaggle.com
+§ http://www.data.gov
+§ https://toolbox.google.com/datasetsearch
+
+
+To make a JAR available to runtime environment (JRE)...
+
+```
+$ javac -classpath .:sinbad.jar -d . Driver.java
+$ java -classpath.:sinbad.jar Driver
+```
+
+411 on sinbad 
+https://berry-cs.github.io/sinbad/install-java
+
+
+### Responses
+1.
+    * nytimes.com
+    * piazza.com
+2. nytimes.com collects:
+    * payment information
+    * ip address
+3. delimited means that a file has seperators to compartmentalize its data
+4. you can access the first element and determine its type
+5. 
+    * cats
+    * playing video games
+6.
+    1. how many cats have short tails?
+    2. how many people are playing video games at a given instant?
+7. 
