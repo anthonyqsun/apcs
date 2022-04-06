@@ -1,6 +1,10 @@
 /*
- * Arrays of objects
- */
+uwu kittens: Ivina Wang, Jaylen Zeng, Anthony Sun
+APCS
+LAB08 -- data
+2022-04-06r
+time spent: 4 hrs
+*/
 
 import core.data.*;
 import java.util.ArrayList;
