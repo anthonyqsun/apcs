@@ -3,12 +3,11 @@
 ## Guidelines:
 data sets: \
 \
-§ http://www.kaggle.com\
-§ http://www.data.gov\
-§ https://toolbox.google.com/datasetsearch\
+§ http://www.kaggle.com \
+§ http://www.data.gov \
+§ https://toolbox.google.com/datasetsearch \
 
-\
-To make a JAR available to runtime environment (JRE)...\
+To make a JAR available to runtime environment (JRE)...
 
 ```
 $ javac -classpath .:sinbad.jar -d . Driver.java
