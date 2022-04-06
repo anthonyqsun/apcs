@@ -5,10 +5,11 @@ LAB08 -- data
 time spent: <elapsed time in hours, rounded to nearest tenth>
 
 
-DISCO
+DISCO:
+*
 
-
-QCC
+QCC:
+*
 
 
 <TNPG>'s CSV FLOW:
@@ -17,4 +18,3 @@ QCC
 
 TRUBZ
 <this lab involves using tools that are likely to introduce hiccups; log any troubleshooting issues here>
-
