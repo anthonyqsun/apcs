@@ -1,20 +1,27 @@
 uwu kittens: Ivina Wang, Jaylen Zeng, Anthony Sun
 APCS
 LAB08 -- data
-2022-04-05
-time spent: <elapsed time in hours, rounded to nearest tenth>
+2022-04-06r
+time spent: 4 hrs
 
 
 DISCO:
-*
+* fetchList() takes in the class name and values to pass into the constructor of the given class.
 
 QCC:
-*
+* We could not compile Welcome01.java on Git Bash; but Anthony could compile it using his terminal >:(
+  * Turns out, we need to use a semicolon instead of a colon on windows machines.
+  -> $ javac -classpath .;../sinbad.jar -d . Welcome01.java worked
 
 
-<TNPG>'s CSV FLOW:
-<insert your description of your tools and workflow in creating, editing CSV files>
+uwu kitten's CSV FLOW:
+N/A: we used am xml file. Our thought process can be found on piazza.
 
 
 TRUBZ
-<this lab involves using tools that are likely to introduce hiccups; log any troubleshooting issues here>
+import core.data.*;
+^
+PetInfo.java:6: error: cannot find symbol
+    DataSource ds = DataSource.connect("https://data.montgomerycountymd.gov/api/views/e54u-qx42/rows.xml").load();
+    ^
+** This error came up because we did not add sinbad.jar as a pre-req file.
