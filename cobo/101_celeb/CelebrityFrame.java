@@ -3,6 +3,9 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import javax.swing.*;
+import java.awt.*;
+
 /**
  * GUI Frame class for the Celebrity Game
  * @author cody.henrichsen
@@ -31,16 +34,24 @@ public class CelebrityFrame extends JFrame
 	 * A reference to the CelebrityGame instance to allow for minimized coupling in the object structure.
 	 */
 	private CelebrityGame controller;
+
+	private JFrame frame;
 	
 	
 	/**
 	 * Builds an instance of the CelebFrame with a reference to the CelebrityGame instance.
-	 * @param controller A reference to a CelebrityGame to share with the CelebPanel instance.
+	 * @param controllerRef A reference to a CelebrityGame to share with the CelebPanel instance.
 	 */
 	public CelebrityFrame(CelebrityGame controllerRef)
 	{
 		//The first line of any subclass should ALWAYS be a correct call to the super constructor.
-		super();
+		super("Celebrity Game");
+		controller = controllerRef;
+		this.panelCards = new JPanel(new CardLayout());
+		this.gamePanel = new CelebrityPanel(controller);
+		this.startPanel = new StartPanel(controller);
+		setupFrame();
+
 	
 	}
 	
@@ -49,6 +60,17 @@ public class CelebrityFrame extends JFrame
 	 */
 	private void setupFrame()
 	{
+		CelebrityPanel panel = new CelebrityPanel(controller);
+		frame = new JFrame();
+		panelCards.add(gamePanel, "GAME");
+		panelCards.add(startPanel, "START");
+		this.setSize(800, 800);
+		this.setTitle("Celebrity Game");
+		this.add(panelCards);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setResizable(false);
+		replaceScreen("START");
+		this.setVisible(true);
 		
 	}
 	
@@ -58,7 +80,10 @@ public class CelebrityFrame extends JFrame
 	 */
 	public void replaceScreen(String screen)
 	{
-		
+		if (screen.equals("GAME")){
+			gamePanel.addClue(controller.sendClue());
+		}
+		((CardLayout)panelCards.getLayout()).show(panelCards, screen);
 	}
 	
 }
