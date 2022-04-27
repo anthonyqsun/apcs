@@ -8,10 +8,12 @@ public class Celebrity
 	/**
 	 * The clue to determine the celebrity
 	 */
+	String clue;
 	
 	/**
 	 * The answer or name of the celebrity.
 	 */
+	String answer;
 	
 	/**
 	 * Creates a Celebrity instance with the supplied answer and clue
@@ -20,6 +22,8 @@ public class Celebrity
 	 */
 	public Celebrity(String answer, String clue)
 	{
+		this.answer = answer;
+		this.clue = clue;
 	}
 
 	/**
@@ -28,7 +32,7 @@ public class Celebrity
 	 */
 	public String getClue()
 	{
-		return null;
+		return this.clue;
 	}
 
 	/**
@@ -37,7 +41,7 @@ public class Celebrity
 	 */
 	public String getAnswer()
 	{
-		return null;
+		return this.answer;
 	}
 
 	/**
@@ -46,7 +50,7 @@ public class Celebrity
 	 */
 	public void setClue(String clue)
 	{
-		
+		this.clue = clue;
 	}
 
 	/**
@@ -55,7 +59,7 @@ public class Celebrity
 	 */
 	public void setAnswer(String answer)
 	{
-		
+		this.answer = answer;
 	}
 	
 	/**
@@ -64,7 +68,27 @@ public class Celebrity
 	@Override
 	public String toString()
 	{
-		return null;
+		String s = "";
+
+		s+= "Clue: " + clue + "\nAnswer: " + answer;
+		
+		return s;
 	}
 	
+	public static void main(String[] args) {
+		Celebrity tenz = new Celebrity("Tenz" , "killua SEN player");
+		System.out.println(tenz.getClue());
+		System.out.println(tenz.getAnswer());
+		tenz.setClue("good at the game");
+		tenz.setAnswer("Tyson");
+		System.out.println(tenz.getClue());
+		System.out.println(tenz.getAnswer());
+		System.out.println(tenz);
+		
+
+		
+		
+	}
+
+
 }
