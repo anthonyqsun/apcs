@@ -1,4 +1,13 @@
+/*
+uwu kittens: Anthony Sun, Ivina Wang, Jaylen Zeng
+APCS pd 7
+L09: Celebrity!
+2022-04-26
+time spent: 3.0 hrs
+*/
+
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * The framework for the Celebrity Game project
@@ -11,20 +20,27 @@ public class CelebrityGame
 	/**
 	 * A reference to a Celebrity or subclass instance.
 	 */
-
+	Celebrity gameCelebrity;
 	/**
 	 * The GUI frame for the Celebrity game.
 	 */
-
+	// CelebrityFrame gooey;
 	/**
 	 * The ArrayList of Celebrity values that make up the game
 	 */
+	ArrayList<Celebrity> celebGameList;
 
+	Scanner in;
 	/**
 	 * Builds the game and starts the GUI
 	 */
 	public CelebrityGame()
 	{
+		celebGameList = new ArrayList<Celebrity>();
+		in = new Scanner(System.in);
+		// gooey = new CelebrityFrame(this);
+		prepareGame();
+		play();
 	}
 
 	/**
@@ -32,6 +48,8 @@ public class CelebrityGame
 	 */
 	public void prepareGame()
 	{
+		celebGameList = new ArrayList<Celebrity>();
+		// gooey.replaceScreen("START");
 	}
 
 	/**
@@ -44,7 +62,7 @@ public class CelebrityGame
 	 */
 	public boolean processGuess(String guess)
 	{
-		return false;
+		return sendAnswer().toLowerCase().trim().equals( guess.toLowerCase().trim() );
 	}
 
 	/**
@@ -54,6 +72,53 @@ public class CelebrityGame
 	 */
 	public void play()
 	{
+		while (input("Do you want to add a celebrity or start playing the game? (add/play): ").equals("add")) {
+			pollCelebrity();
+		}
+		while (getCelebrityGameSize() != 0) {
+			clear();
+			playRound();
+		}
+	}
+
+	public void playRound() {
+		gameCelebrity = celebGameList.remove(0);
+		String answer;
+		do {
+			System.out.println("Clue: "+gameCelebrity.getClue());
+			answer = input("Guess (type \"give up\" to move on): ");
+			if (answer.equals("give up")) break;
+		}
+		while (!processGuess(answer));
+		System.out.println("You've finished! Congratulations.");
+	}
+
+	public String input(String input) {
+		System.out.print(input);
+		return in.nextLine();
+	}
+
+	public void clear() {
+		System.out.print("\033[H\033[2J");  
+    	System.out.flush(); 
+	}
+
+	public void pollCelebrity() {
+		String name;
+		String clue;
+		String type;
+		do {
+			name = input("Celebrity name: ");
+		}
+		while (!validateCelebrity(name));
+
+
+		do {
+			clue = input("Clue: ");
+			type = input("Type: ");
+		}
+		while (!validateClue(clue, type));
+		addCelebrity(name, clue, type);
 		
 	}
 
@@ -69,6 +134,20 @@ public class CelebrityGame
 	 */
 	public void addCelebrity(String name, String guess, String type)
 	{
+		Celebrity temp = new Celebrity("","");
+		
+		if (type.equals("Celebrity")) {
+			temp = new Celebrity(name, guess);
+		}
+		if (type.equals("LiteratureCelebrity")) {
+			temp = new LiteratureCelebrity(name, guess);
+		}
+		if (type.equals("GamingCelebrity")) {
+			temp = new GamingCelebrity(name, guess);
+		}
+		
+		celebGameList.add(temp);	
+
 		
 	}
 
@@ -79,7 +158,7 @@ public class CelebrityGame
 	 */
 	public boolean validateCelebrity(String name)
 	{
-		return false;
+		return name.trim().length() >= 4;
 	}
 
 	/**
@@ -91,9 +170,8 @@ public class CelebrityGame
 	 */
 	public boolean validateClue(String clue, String type)
 	{
-		return false;
+			return clue.trim().length() >= 10;
 	}
-
 	/**
 	 * Accessor method for the current size of the list of celebrities
 	 * 
@@ -101,7 +179,7 @@ public class CelebrityGame
 	 */
 	public int getCelebrityGameSize()
 	{
-		return 0;
+		return celebGameList.size();
 	}
 
 	/**
@@ -112,7 +190,7 @@ public class CelebrityGame
 	 */
 	public String sendClue()
 	{
-		return null;
+		return gameCelebrity.getClue();
 	}
 
 	/**
@@ -123,6 +201,6 @@ public class CelebrityGame
 	 */
 	public String sendAnswer()
 	{
-		return null;
+		return gameCelebrity.getAnswer();
 	}
 }

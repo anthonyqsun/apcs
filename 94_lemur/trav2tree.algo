@@ -1,0 +1,92 @@
+uwu kittens :: Anthony, Ivina, Jaylen
+APCS pd7
+HW94 -- reverse engineering
+2022-05-06f
+time spent: 0.5 hrs
+
+
+DISCO
+------------------------------------------------
+* having two identical subtrees for a given node means that only 1 orientation exists, while having 2 unidentical trees means there's 2 orientations.
+* If one of the two given traversals is in-order, then it is very likely that you could reconstruct 1 concrete tree.
+================================================
+
+
+QCC
+------------------------------------------------
+* how do we write given post and pre?
+* is there a constant pattern for unique trees given a traversal
+================================================
+
+
+HOW KEEN ARE YOUR POWERS OF OBSERVATION?
+------------------------------------------------
+Q: For a given binary tree, how many unique pre-order traversals are there?
+A: 1
+
+Q: For a given binary tree, how many unique in-order traversals are there?
+A: 1
+
+Q: For a given binary tree, how many unique post-order traversals are there?
+A: 1
+
+Q: For a given traversal, how many unique trees could have produced it?
+A: 
+height of 1: 1
+height of 2: 3
+height of 3: 15
+(we are unsure how it progresses, but we know it's f(height)+1 where f is some calculation)
+
+Q: Given a pre-order traversal, what can you infer about its tree?
+A: The first processed element is the root of the tree. The last processed element must be the rightmost node. 
+
+Q: Given a post-order traversal, what can you infer about its tree?
+A: The first processed element is the leftmost element of the tree. The last processed element is the root of the tree.
+
+Q: What does "1-to-1" mean?
+A: This refers to how no two items will point to the same value. For example, in a mathematical function, no two elements can share a single value.
+
+Q: What does "onto" mean?
+A: Multiple inputs can map to one output. 
+
+
+================================================
+
+ALGO for pre + in
+------------------------------------------------
+givens: pre-order traversal and in-order traversal
+
+
+procedure:
+* Identify the next element processed in the pre-order traversal. This is a node. 
+* Locate that element in the in-order traversal. Everything to the left of that element is in the left subtree, and everything to the right is the right subtree.
+* if there is no left or right subtree, this is a leaf.
+* repeat algo on both subtrees.
+* YAS
+
+================================================
+
+ALGO for post + in
+------------------------------------------------
+givens: post-order traversal and in-order traversal
+
+procedure:
+* Reading right to left, identify the next element processed in the post-order traversal. This is a node.
+* Locate that element in the in-order traversal. Everything to the left of that element is in the left subtree, and everything to the right is the right subtree.
+* if there is no left or right subtree, this is a leaf.
+* repeat algo on both subtrees.
+* YASS
+
+================================================
+
+ALGO for pre + post
+------------------------------------------------
+givens: pre-order traversal and post-order traversal
+
+procedure:
+* Identify the first element processed in the pre-order traversal. This is the root, and should be the same as the last element of the post-order. 
+* gl with the rest ty :)
+* YASSS
+* Help!
+
+================================================

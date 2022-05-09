@@ -47,6 +47,7 @@ public class StartPanel extends JPanel
   /**
    * Customize the JRadioButton for the class created sub class
    */
+   private JRadioButton gamingRadio;
   
   /**
    * Label to guide the user to what should be inputted.
@@ -92,7 +93,7 @@ public class StartPanel extends JPanel
    * String to populate the clueLabel if Class Generated Celebrity is picked.
    */
   
-  
+  private String gamingClue;
   /**
    * String used for static text in label.
    */
@@ -119,8 +120,10 @@ public class StartPanel extends JPanel
     this.typeGroup = new ButtonGroup();
     this.celebrityRadio = new JRadioButton("Celebrity");
     this.literatureRadio = new JRadioButton("Literature Celebrity");
+    this.gamingRadio = new JRadioButton("Gaming Celebrity");
     this.celebrityClue = "Enter the clue for the celebrity";
     this.literatureClue = "Enter the clues for the literature celeb separated by commas";
+    this.gamingClue = "Enter the clues for the gaming celeb seperated by commas";
     this.clueLabel = new JLabel(celebrityClue);
     
     this.answerField = new JTextField("Type celebrity here (4 letters minimum thx Cher)");

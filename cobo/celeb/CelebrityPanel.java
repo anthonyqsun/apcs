@@ -190,7 +190,7 @@ public class CelebrityPanel extends JPanel
      * method in the game.
      */
     resetButton.addActionListener(new ActionListener()
-                                    {
+      {
       public void actionPerformed(ActionEvent mouseClick)
       {
         controller.play();
