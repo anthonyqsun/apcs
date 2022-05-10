@@ -8,7 +8,7 @@ With L = level, d = depth, h = height…
 
 a perfect binary tree has 2^0+...+2^d nodes
 at each level, a perfect binary tree has 2^d nodes
-height of a complete binary tree w/ n nodes is 0 
+height of a complete binary tree w/ n nodes is d
 
 
 QCC:
