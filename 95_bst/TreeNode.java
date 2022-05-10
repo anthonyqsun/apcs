@@ -1,3 +1,11 @@
+/*
+uwu kittens: Anthony Sun, Ivina Wang, Jaylen Zeng
+APCS pd 7
+HW95: Algorithm as Data Structure
+2022-05-09r
+time spent: 1.0 hrs
+*/
+
 /**
  * class TreeNode
  * SKELETON
