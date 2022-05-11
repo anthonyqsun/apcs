@@ -1,0 +1,12 @@
+uwu kittens: Anthony Sun, Ivina Wang, Jaylen Zeng
+APCS pd 7
+HW96: BSTs is the Perfect Place for Shade
+2022-05-11t
+time spent: 1.0 hrs
+
+DISCO:
+* recursive is not fun :)
+* helpers are cool tho
+
+QCC:
+* n/a
