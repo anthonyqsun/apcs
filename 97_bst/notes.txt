@@ -1,0 +1,16 @@
+uwu kittens: Anthony Sun, Ivina Wang, Jaylen Zeng
+APCS pd 7
+HW97: Prune Your Tree
+2022-05-12r
+time spent: 1.0 hrs
+
+DISCO:
+*  we have four cases for the node we want to remove
+    1. no children
+    2. only one child on left
+    3. only one child on right
+    4. has two children
+
+QCC:
+* error -> Exception in thread "main" java.lang.NullPointerException: Cannot invoke "TreeNode.getLeft()" because "<local3>" is null
+                at BST.removeH(BST.java:226)
