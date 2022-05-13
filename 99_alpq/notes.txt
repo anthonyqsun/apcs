@@ -1,0 +1,12 @@
+uwu kittens: Anthony Sun, Ivina Wang, Jaylen Zeng
+APCS pd 7
+HW99: S.A.M.E.T.O. codified
+2022-05-16m
+time spent: .3 hrs (classtime)
+
+DISCO:
+* this assignment is very easy when we implemented passthru functionality
+* Lower int values have higher priority
+
+QCC:
+* How can we assign priorities and values?
