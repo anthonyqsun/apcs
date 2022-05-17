@@ -1,0 +1,9 @@
+uwu kittens: Anthony Sun, Ivina Wang, Jaylen Zeng
+APCS pd 7
+HW101-- Heap o'Trouble
+2022-05-17t
+time spent: .5 hrs
+
+Insertion Algo:
+* insert value at the bottom of the tree, such that it is on the next available leftmost vacancy. If the tree is perfect, insert node to the left of the leftmost element.
+* while the parent is greater than the child node containing the value, swap it with its parent node

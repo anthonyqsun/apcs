@@ -1,0 +1,11 @@
+uwu kittens: Anthony Sun, Ivina Wang, Jaylen Zeng
+APCS pd 7
+HW101-- Heap o'Trouble
+2022-05-17t
+time spent: .5 hrs
+
+DISCO:
+* you can start at the bottom of a heap to insert
+
+QCC:
+* for removal, do we remove a specific value in the tree, or the min/max?
